@@ -1,0 +1,12 @@
+[x]Interprit uplink source code.
+ |-[]Mission Generator
+ |-[]Plot generator (leave it out for later.)
+ |-[]Global generation.
+ 
+IDEAS:
+in-game browser
+in-game Wiki page(community sourced.)
+IRC(Uplink has it)
+Ability to create new hacking programs.
+
+GOALS:
