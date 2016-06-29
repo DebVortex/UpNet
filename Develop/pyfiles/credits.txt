@@ -1,0 +1,12 @@
+This game bundles:
+youtube-dl
+License: Attribution-ShareAlike 3.0 Unported
+https://creativecommons.org/licenses/by-sa/3.0/deed.en_US
+site: https://rg3.github.io/youtube-dl/
+
+FFmpeg
+License: GNU Lesser General Public License v2.1 and GNU General Public License, version 2
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+site: https://www.ffmpeg.org
+sourcery: https://www.ffmpeg.org/download.html#get-sources

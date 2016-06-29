@@ -1,10 +1,11 @@
 import logging
 import pygame
+import eastereggs
 Version = 'Version number: 0.2'
 Feature = 'Sound,Render,Get,NOPE,PrivateException'
 #sond errors
 def SouError(file):
-    SoundError(file)
+    logging.fatal("Called a invalid Sound file from master sound file with the name of :"+ file)
 #Generation errors (TODO: Diversify it.)
 def GenError():
     logging.fatal("Generation of stuff has failed!")
@@ -16,16 +17,21 @@ def NOPE():
     logging.fatal("NOPE")
     logging.fatal("http://pruebakr-1.webcindario.com/nope.jpg")
     pygame.quit()
-def privateViolation():
+def private():
     logging.fatal("Can't Touch This! It is a private man!")
-    logging.fatal('Here is a video for your Efforts ;) > https://youtu.be/otCpCn0l4Wo?t=13s')
+    logging.fatal('Here is a video for your Efforts ;) > https://youtu.be/otCpCn0l4Wo?t=14s')
 def yes():
     count = 0
     while count < 1000000:
         print('Y')
         count += 1
-def ModInfo()
+def ModInfo():
     logging.info(Version)
     logging.info(Feature)
-class SoundError(Exception,file):
-    
+class Visa():
+    logging.info('called visa as an exception! loading matt video...')
+    eastereggs.Video('matt')
+class BrexitPM():
+    logging.info('Easteregg activate!')
+    eastereggs.Video('Brexit')
+BrexitPM()
