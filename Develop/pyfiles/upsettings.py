@@ -21,7 +21,7 @@ def GetIPSett(name):
     try:
         IPcfg.get(name)
     except Exception:
-        logging.warn('unable to get ' + name + ' that is in settings!')
+        Excepts.GetError(name)
 def GetGlobsett(name):
     try:
         logging.debug(Globcfg.get(name))

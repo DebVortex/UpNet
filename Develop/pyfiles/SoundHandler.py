@@ -52,18 +52,3 @@ def Soundplay(sound):
     Sound = pygame.mixer.Sound(sound)
     Sound.play()
 # Buttons..and all the noises that make upnet exciting
-def ButtonNo(No):
-    int(no)
-    if no == 0:
-        Soundplay('sounds/effects/buttons/0.wav')
-    elif no == 1:
-        Soundplay('sounds/effects/buttons/1.wav')
-    elif no == 2:
-        Soundplay('sounds/effects/buttons/2.wav')
-    elif no == 3:
-        Soundplay('sounds/effects/buttons/3.wav')
-    elif no == 4:
-        Soundplay('sounds/effects/buttons/4.wav')
-    elif no == 5:
-        Soundplay('sounds/effects/buttons/5.wav')
-def 

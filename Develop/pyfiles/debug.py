@@ -8,7 +8,11 @@ if debug==1:
     logging.debug('--------------DEBUG INFO--------------')
     logging.debug('Detected OS:' + Global.detectOS())
     logging.debug("driver used :" + pygame.display.get_driver())
+    logging.debug(pygame.get_sdl_version())
     logging.debug('--------------Netexcerpts--------------')
     print(Excepts.Version)
     print(NetExcepts.Feature)
-    logging.debug('---------------------------------------')
+    logging.debug('----------------CREDITS-----------------')
+    logging.debug('powered By:')
+    logging
+    

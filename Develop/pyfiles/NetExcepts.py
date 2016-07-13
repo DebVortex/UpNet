@@ -1,6 +1,5 @@
 import logging
 import pygame
-import eastereggs
 Version = 'Version number: 0.2'
 Feature = 'Sound,Render,Get,NOPE,PrivateException'
 #sond errors
@@ -28,10 +27,3 @@ def yes():
 def ModInfo():
     logging.info(Version)
     logging.info(Feature)
-class Visa():
-    logging.info('called visa as an exception! loading matt video...')
-    eastereggs.Video('matt')
-class BrexitPM():
-    logging.info('Easteregg activate!')
-    eastereggs.Video('Brexit')
-BrexitPM()

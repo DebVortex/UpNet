@@ -39,3 +39,6 @@ def Video(Movie):
         screen.blit(movie_screen,(0,0))
         pygame.display.update()
         clock.tick(FPS)
+def Icon(Loc):
+    logging.info('Icon called,setting icon of screen.')
+    pygame.display.set_icon(Pygame.image.load(Loc))

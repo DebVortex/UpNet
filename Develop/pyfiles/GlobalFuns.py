@@ -1,22 +1,24 @@
+#system
 import sys
-import pygame
-import urllib
-import logging
 import os
+#pygame
+import pygame
+#other pyfiles
+import urllib
 import logging
 import time
 import random
 import upsettings as settings
 import SoundHandler
 import os
-import eastereggs
 import urllib2
+import requests
+from tqdm import tqdm
 def startupgame():
     eastereggs.startEastereggcheck()
+    detectOS()
     #placeholder icon. (todo in the future.)
     logging.debug('setting icon..')
-    print os.getcwd()
-    #pygame.display.set_icon(pygame.image.load('images\icon3.ico'))
     logging.debug('set icon!')
     SoundHandler.StartupHandler()
     logging.debug('get date from system.')
@@ -45,14 +47,35 @@ def detectOS():
         return('unknown!')
 '''
 check for internet. This only tries to connect to google's DNS.
-if you are REALLY paranoid.. there is a config option under General.cfg to disable this.
+if you are REALLY paranoid... there is a config option under General.cfg to disable this.
 '''
 def internet_on():
-    if GetGlobsett(disableinterwebzcheck) == 0:
+    if settings.GetGlobsett('disableinterwebzcheck') == 0:
         try:
             response=urllib2.urlopen('8.8.8.8',timeout=1)
             return True
-        except urllib2.URLError as err: pass
+        except urllib2.URLError as err:
             return False
     else:
-        logging.info('internet check is disabled.')
+        logging.info('internet check is disabled.(This is Normal Most of the time if you manually disable it.)')
+def Spam(Spam):
+    if Spam == 'True':
+        try: 
+            spamtext = open('spam.txt','r')
+        except Exception:
+            spamtext = open('pyfiles\spam.txt','r')
+        for line in spamtext:
+            logging.info(line)
+        spamtext.close()
+        logging.info('sorry :(')
+    else:
+        pass
+def DownloadItem(url,name,Size):
+    if settings.GetGlobsett('disableinterwebzcheck') == '0':
+        print('The size of this file is:' + Size)
+        if Size > 100:
+            print('This file is quite large and may take a long time on a bad internet.')
+        urllib.urlretrieve (url, name)
+        print('Done!')
+    else:
+        logging.info('Connection to internet is currently turned off. please enable it for downloading.')
