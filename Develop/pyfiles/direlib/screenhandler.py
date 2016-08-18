@@ -42,3 +42,12 @@ def Video(Movie):
 def Icon(Loc):
     logging.info('Icon called,setting icon of screen.')
     pygame.display.set_icon(Pygame.image.load(Loc))
+def createobject(icon,x,y):
+    try:
+        iconload = pygame.image.load(icon)
+    except Exception:
+        logging.error('create object was given a invalid extension that pygame cannot load!')
+    pygame.screen.blit(iconload,(x,y))
+    pygame.display.update()
+    logging.info('successfuly created object!')
+def 

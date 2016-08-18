@@ -15,7 +15,10 @@ def GetError(whatev):
 def NOPE():
     logging.fatal("NOPE")
     logging.fatal("http://pruebakr-1.webcindario.com/nope.jpg")
-    pygame.quit()
+    try:
+        pygame.quit()
+    except Exception:
+        continue
 def private():
     logging.fatal("Can't Touch This! It is a private man!")
     logging.fatal('Here is a video for your Efforts ;) > https://youtu.be/otCpCn0l4Wo?t=14s')

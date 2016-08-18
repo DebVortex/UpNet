@@ -9,20 +9,18 @@ import logging
 import time
 import random
 import upsettings as settings
-import SoundHandler
+import SoundHandler as sound
 import os
 import urllib2
 import requests
 from tqdm import tqdm
 def startupgame():
-    eastereggs.startEastereggcheck()
     detectOS()
-    #placeholder icon. (todo in the future.)
-    logging.debug('setting icon..')
-    logging.debug('set icon!')
     SoundHandler.StartupHandler()
-    logging.debug('get date from system.')
+    sound.Randomise('0.5')
+    commandline.mainmenu()
     logging.info('Init Complete')
+    
 # os detection
 def detectOS():
     if sys.platform == "win32":
@@ -45,19 +43,7 @@ def detectOS():
         logging.info('This OS is probably outdated or is not detected.')
         settings.OSset('4')
         return('unknown!')
-'''
-check for internet. This only tries to connect to google's DNS.
-if you are REALLY paranoid... there is a config option under General.cfg to disable this.
-'''
-def internet_on():
-    if settings.GetGlobsett('disableinterwebzcheck') == 0:
-        try:
-            response=urllib2.urlopen('8.8.8.8',timeout=1)
-            return True
-        except urllib2.URLError as err:
-            return False
-    else:
-        logging.info('internet check is disabled.(This is Normal Most of the time if you manually disable it.)')
+
 def Spam(Spam):
     if Spam == 'True':
         try: 
@@ -70,12 +56,3 @@ def Spam(Spam):
         logging.info('sorry :(')
     else:
         pass
-def DownloadItem(url,name,Size):
-    if settings.GetGlobsett('disableinterwebzcheck') == '0':
-        print('The size of this file is:' + Size)
-        if Size > 100:
-            print('This file is quite large and may take a long time on a bad internet.')
-        urllib.urlretrieve (url, name)
-        print('Done!')
-    else:
-        logging.info('Connection to internet is currently turned off. please enable it for downloading.')

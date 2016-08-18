@@ -11,6 +11,7 @@ import pygame
 import upsettings as settings
 import GlobalFuns as Global
 import NetExcepts as EN
+import linereader
 #TODO:rewrite classes
 class WorldGen:
     def GenAll():
@@ -42,9 +43,12 @@ def IPGen(name,IP=None):
     elif IP is not None:
         settings.IPset(name,IP)
     else:
-        raise Exception
         EN.GenError()
-'''IPGen('hello!')'''
+#passwords (i guess it is considered under generators? :P)
+def passwordget(name):
+    passwords = linereader.dopen(name)
+    nolines = name.count('\n')
+    logging.info('the number of lines in this files is :' + nolines)
+    return file.getline(random.randint(1,nolines)
 def StaticIP():
-    IPGen('Introversionsoftware','50.19.100.182')
-    
+    IPGen('Introversionsoftware','50.19.100.182')   

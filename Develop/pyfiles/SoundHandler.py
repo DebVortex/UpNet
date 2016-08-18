@@ -26,29 +26,25 @@ def music(song=None,level='1.0'):
         pygame.mixer.music.play()
         pygame.mixer.music.set_volume(float(level))
         logging.debug('done!')
-def quemusic(self,song):
+def queue(self,song):
     logging.debug('que new song!')
     pygame.mixer.music.queue(song)
     logging.debug('done!')
 #it finally works! (30/4/2015)
-#musiclist: adds music from a addon music list to the master.
-def musiclist(Configfile):
-    logging.debug('-------------------')
-    logging.debug('adding Sound Config Info.')
-    ToAdd = open(Configfile, "r")
+#musiclist: adds music from a list to the master list.
+def list(whatev):
+    logging.debug('openmusiccfg')
     copy = open('Configuration\MusicConfig.cfg', "a")
-    logging.debug('writing...')
+    logging.debug('write')
     copy.write("\n")
-    for line in ToAdd:
-        copy.write(line)
+    copy.write(whatev)
     ToAdd.close()
     copy.close()
-    logging.debug('Done!')
+    logging.debug('Done')
     logging.debug('-------------------')
 # Randomisation of music to play.
-def RandomiseGet(level):
+def Randomise(level):
     music(settings.MRandomGet(),level)
-def Soundplay(sound):
+def play(sound):
     Sound = pygame.mixer.Sound(sound)
     Sound.play()
-# Buttons..and all the noises that make upnet exciting
