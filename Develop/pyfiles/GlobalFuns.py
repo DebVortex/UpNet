@@ -14,10 +14,11 @@ import os
 import urllib2
 import requests
 from tqdm import tqdm
+import commandline
 def startupgame():
+    loadglobals()
     detectOS()
-    SoundHandler.StartupHandler()
-    sound.Randomise('0.5')
+    sound.StartupHandler()
     commandline.mainmenu()
     logging.info('Init Complete')
     
@@ -56,3 +57,9 @@ def Spam(Spam):
         logging.info('sorry :(')
     else:
         pass
+def loadglobals():
+    print('loading globals...')
+    global corefile
+    corefile = '\core'
+    print(corefile)
+    print('ok! globals started!')

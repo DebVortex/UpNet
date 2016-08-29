@@ -8,7 +8,7 @@ import shutil
 import os
 #Generic sound stuff.
 def StartupHandler():
-    logging.debug('Music Handler called for flicking on the lights.')
+    logging.debug('Starting up Music module')
     if pygame.mixer.get_init():
         logging.debug('mixer get init returns true. not starting it up again.')
         pass
@@ -26,25 +26,3 @@ def music(song=None,level='1.0'):
         pygame.mixer.music.play()
         pygame.mixer.music.set_volume(float(level))
         logging.debug('done!')
-def queue(self,song):
-    logging.debug('que new song!')
-    pygame.mixer.music.queue(song)
-    logging.debug('done!')
-#it finally works! (30/4/2015)
-#musiclist: adds music from a list to the master list.
-def list(whatev):
-    logging.debug('openmusiccfg')
-    copy = open('Configuration\MusicConfig.cfg', "a")
-    logging.debug('write')
-    copy.write("\n")
-    copy.write(whatev)
-    ToAdd.close()
-    copy.close()
-    logging.debug('Done')
-    logging.debug('-------------------')
-# Randomisation of music to play.
-def Randomise(level):
-    music(settings.MRandomGet(),level)
-def play(sound):
-    Sound = pygame.mixer.Sound(sound)
-    Sound.play()

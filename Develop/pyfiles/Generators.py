@@ -49,6 +49,7 @@ def passwordget(name):
     passwords = linereader.dopen(name)
     nolines = name.count('\n')
     logging.info('the number of lines in this files is :' + nolines)
-    return file.getline(random.randint(1,nolines)
+    return (file.getline(random.randint(1,nolines)))
+    
 def StaticIP():
     IPGen('Introversionsoftware','50.19.100.182')   

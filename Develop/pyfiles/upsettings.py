@@ -3,6 +3,8 @@ import datetime
 import random
 import NetExcepts as Excepts
 import logging
+import json
+#NOTE: moving away from easysettings config files (pls remember!)
 IPcfg = easysettings.EasySettings("Configuration\IPcfg.cfg")
 Globcfg = easysettings.EasySettings("Configuration\General.cfg")
 Globmusic = easysettings.EasySettings("Configuration\MusicConfig.cfg")
@@ -29,14 +31,3 @@ def GetGlobsett(name):
         return (Globcfg.get(name))
     except Exception:
         Excepts.GetError(name)
-
-def MusiclistGetSong(song):
-    try:
-        logging.debug(song)
-        return (Globmusic.get(song))
-    except Exception:
-        Excepts.SouError(song)
-        
-def MRandomGet():
-    MusiclistRand = Globmusic.list_options()
-    return random.choice(MusiclistRand)
