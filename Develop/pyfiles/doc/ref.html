@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>Ref class</title></head><body><h1>class <tt>references.Ref</tt></h1>Class <b>Ref</b> is the basis of a system for dynamically linking <a href="control.html">Control</a> classes with values to be displayed and edited. An instance of Ref is used as a starting point for constructing <i>reference objects</i>.
+There are a number of different kinds of reference objects, depending
+on whether the underlying value is accessed through an attribute, item
+index or method call. All of these reference objects present a common
+interface, consisting of <tt>get()</tt> and <tt>set()</tt> methods, that the Control uses to access the value whenever it needs to display or update it.<br><br>The simplest way of using Ref is illustrated by the following example:<br><blockquote><tt>velocity_ref = Ref(vehicle).velocity</tt><br><tt>velocity_ctrl = IntField(ref = velocity_ref)</tt><br></blockquote>Here, the expression <tt>Ref(vehicle)</tt> creates a&nbsp;<i>reference source object</i> from which reference objects can be derived. Accessing the <tt>velocity</tt> attribute of this object creates an <i>attribute reference object</i> that refers to the <tt>velocity</tt>
+attribute of the vehicle. This attribute reference object is then
+attached to an IntField. The result is that the IntField will always
+display the current value of the vehicle's <tt>velocity</tt> attribute, and if the user enters a new value into the field, vehicle's <tt>velocity</tt> attribute will be updated.<br><br>Reference
+objects can themselves be a source for further reference objects.
+Suppose you have a multi-player turn-taking game, and you want to
+display information about the player whose turn it is next. You might
+create a reference object like this:<br><blockquote><tt>score_ref = Ref(world).current_game.current_player.score</tt><br></blockquote>Here we assume that <tt>world</tt> is a global object that doesn't change, but a game object is created each time a new game starts, and its <tt>current_player</tt>
+attribute switches around as the game is played. This statement creates
+a chain of reference objects culminating in an attribute reference for
+the attribute called <tt>score</tt>. Each time the <tt>get()</tt> or <tt>set()</tt>
+method of this reference object is called, the corresponding chain of
+attribute lookups is performed anew. So, if we attach our <tt>score_ref</tt> to a control, it will always display the score of the current player of the current game, whatever those objects happen to be.<br><br>As well as attribute access, indexing and calling can also be performed on a reference source:<br><blockquote><tt>ref_source[index]</tt> produces an <i>item reference object</i> that accesses an item of a sequence or mapping.<br></blockquote><blockquote><tt>ref_source(args)</tt> produces a <i>call reference object</i> that performs a call when its <tt>get()</tt>
+method is called. This kind of reference object is read-only (but it
+can be used as a source of further reference objects that are
+read-write).<br></blockquote><h2>Constructor</h2><blockquote><dl><dt><tt>Ref(base)</tt></dt><dd>Creates
+a reference source object based on the given object. Reference objects
+can be derived from this reference source using the operations listed
+below.</dd></dl></blockquote><h2>Reference source operations</h2><blockquote><dl><dt><tt>ref_source.attribute</tt></dt><dd>Returns a reference object that reads and writes the specified attribute of its base object.<br><br></dd><dt><tt>ref_source[index]</tt></dt><dd>Returns a reference object that reads and writes the specifed item of its base object.<br><br></dd><dt><tt>ref_source(arg, ...)</tt></dt><dd>Returns
+a reference object that calls its base object with the specified
+arguments. This reference object is read-only, i.e. only its <tt>get()</tt> method may be used. However, read-write reference objects can be derived from it using attribute access or indexing.<br>
+      <br>
+</dd><dt style="font-family: monospace;">+ref_source</dt>
+    <dd>Converts a reference to a callable object into an object that
+can itself be called. Arguments are passed on to the underlying
+callable, A typical use is to specify the action property of a button
+using a reference. For example,<br>
+      <br>
+      <div style="margin-left: 40px;"><span style="font-family: monospace;">Button("Launch", action = +Ref(game).current_player.launch_missile)</span><br>
+      </div>
+      <br>
+creates a button that performs <span style="font-family: monospace;">game.current_player.launch_missile()</span> when clicked.<br>
+      <br>
+Note that the object returned by this operation is not a reference source.<br>
+    </dd>
+</dl></blockquote><h2>Reference object methods</h2>Reference
+objects created from reference sources have the following methods.
+Every reference object is also a reference source, so the above
+reference source operations may also be applied to them.<br><blockquote><dl><dt><tt>get()</tt></dt><dd>Returns
+the current value of the referenced attribute or item, or in the case
+of a call reference, calls the referenced callable object.<br><br></dd><dt><tt>set(value)</tt></dt><dd>Sets the value of the referenced attribute or item.</dd></dl></blockquote><br>---</body></html>

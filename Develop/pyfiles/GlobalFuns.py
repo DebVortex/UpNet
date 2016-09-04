@@ -1,24 +1,25 @@
-#system
+#system/python
 import sys
 import os
-#pygame
-import pygame
-#other pyfiles
 import urllib
 import logging
 import time
 import random
+#pygame
+import pygame
+#other pyfiles
 import upsettings as settings
 import SoundHandler as sound
-import os
 import urllib2
 import requests
-from tqdm import tqdm
 import commandline
+import Mods
 def startupgame():
-    loadglobals()
     detectOS()
     sound.StartupHandler()
+    print('loading all Mods...')
+    Mods.resScan()
+    print('Finished loading!')
     commandline.mainmenu()
     logging.info('Init Complete')
     
@@ -57,9 +58,3 @@ def Spam(Spam):
         logging.info('sorry :(')
     else:
         pass
-def loadglobals():
-    print('loading globals...')
-    global corefile
-    corefile = '\core'
-    print(corefile)
-    print('ok! globals started!')

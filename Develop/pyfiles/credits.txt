@@ -10,3 +10,9 @@ http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
 site: https://www.ffmpeg.org
 sourcery: https://www.ffmpeg.org/download.html#get-sources
+
+Albow
+License : Free Software
+"This is free software. You may use it, redistribute it and create and
+distribute derivative works from it without restriction."
+site : http://www.cosc.canterbury.ac.nz/greg.ewing/python/Albow/

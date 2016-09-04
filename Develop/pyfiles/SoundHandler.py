@@ -6,6 +6,8 @@ import upsettings as settings
 import easysettings
 import shutil
 import os
+import albow
+import NetExcepts as Excepts
 #Generic sound stuff.
 def StartupHandler():
     logging.debug('Starting up Music module')
@@ -17,12 +19,14 @@ def StartupHandler():
         pygame.mixer.init(48000)
         logging.debug('done!')
 
-def music(song=None,level='1.0'):
-    if song == None:
-        RandomiseGet(level)
+def genAlbowlist(resfile):
+    """
+    FOR MODDERS: DO NOT CALL THIS DIRECTLY
+    game will call this when loading resource files!
+    """
+    logging.debug('New Albow list called!')
+    if resfile == []:
+        logging.error('List is invalid! refusing to load.')
     else:
-        logging.debug('new song init!')
-        pygame.mixer.music.load(settings.MusiclistGetSong(song))
-        pygame.mixer.music.play()
-        pygame.mixer.music.set_volume(float(level))
-        logging.debug('done!')
+        albow.Playlist(resfile,True,True)
+    logging.debug('Albowlist added!')
