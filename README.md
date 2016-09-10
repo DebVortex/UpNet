@@ -1,3 +1,4 @@
+#ON HIATUS
 # UpNet
 An Open-Source hacking game, made to have to features of both Uplink and Hacknet.
 ## FAQ
