@@ -6,17 +6,16 @@ import logging
 import upsettings
 import SoundHandler as sound
 import jsoncfg
+import glob
 def resScan():
-    print('called?')
     logging.info('starting to scan for all resources.json files...')
-    for root, dirs, files in os.walk("\Mods"):
-        print(dirs)
-        for name in files:
-            
-            if name == "resources.json":
-                resfile = os.path.join(root, name)
+    for root, dirs, files in os.walk('.\mods'):
+        for names in files:
+            if names == "resources.json":
+                resfile = os.path.join(root, names)
+                print(resfile)
                 logging.info('Resource file found: ' + resfile)
-                rescfg = jsoncfg.load_config(resfile)
+                rescfg = jsontree.load_config(resfile)
                 if not soundlist:
                     logging.info('sound list not given skipping...')
                 else:

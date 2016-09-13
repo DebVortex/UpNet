@@ -21,7 +21,6 @@ def startupgame():
     Mods.resScan()
     print('Finished loading!')
     commandline.mainmenu()
-    logging.info('Init Complete')
     
 # os detection
 def detectOS():
