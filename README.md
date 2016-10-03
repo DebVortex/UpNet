@@ -1,15 +1,7 @@
 #ON HIATUS
-# UpNet
-An Open-Source hacking game, made to have to features of both Uplink and Hacknet.
+# About
+HakcNet is a open-source Uplink clone (Yes i said it) Intended to rewrite the entire series of Uplink to be much more closer to Real life but still maintaining the feel of HollyWood Hacking.
 ## FAQ
-Q: Yet another hacking game?
-
-A:Sure why not. This is and still is based on the original Uplink.
-
 Q:What are the features?
 
-A: For now.... a lot is WIP but this list as follows:
-- All the features of uplink.
-- pure command-line instance
-- Bitcoin mining and all features that are relevant to it.
-- Modable to the extreme.
+A: Found Under the projects tab as "suggestions" They will be implemented sooner or later.
