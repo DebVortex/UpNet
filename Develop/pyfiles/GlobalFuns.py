@@ -14,6 +14,8 @@ import urllib2
 import requests
 import commandline
 import Mods
+import cPickle
+import datetime
 def startupgame():
     detectOS()
     sound.StartupHandler()
@@ -57,3 +59,5 @@ def Spam(Spam):
         logging.info('sorry :(')
     else:
         pass
+def SaveGame():
+    

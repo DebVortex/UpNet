@@ -8,11 +8,13 @@ import Generators as Gen
 import sys
 
 def mainmenu():
-    printf('1. New Game')
+    printf('1. New User')
     print('')
-    printf('2. Load Saved Game')
+    printf('2. Returning User')
     print('')
-    printf('3. Exit')
+    printf('3. Retire')
+    print('')
+    printf('4. Exit')
     print('')
     selection = input('Input >:')
     selection = int(selection)
