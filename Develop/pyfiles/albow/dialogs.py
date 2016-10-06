@@ -1,10 +1,10 @@
 import textwrap
 from pygame import Rect
 from pygame.locals import *
-from widget import Widget
-from controls import Label, Button
-from layout import Row, Column
-from fields import TextField
+from .widget import Widget
+from .controls import Label, Button
+from .layout import Row, Column
+from .fields import TextField
 
 class Modal(object):
 

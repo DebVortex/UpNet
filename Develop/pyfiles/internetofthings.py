@@ -5,8 +5,8 @@
 '''
 if you are paranoid... there is a config option under General.cfg to disable this whole module.
 '''
-import upsettings as settings
-import urllib2
+from . import upsettings as settings
+import urllib.request, urllib.error, urllib.parse
 import wget
 from apiclient.discovery import build
 from apiclient.errors import HttpError
@@ -14,18 +14,18 @@ from oauth2client.tools import argparser
 def internet_on():
     if settings.GetGlobsett('disableinterwebzcheck') == 0:
         try:
-            response=urllib2.urlopen('8.8.8.8',timeout=1)
+            response=urllib.request.urlopen('8.8.8.8',timeout=1)
             return True
-        except urllib2.URLError as err:
+        except urllib.error.URLError as err:
             return False
     else:
         logging.info('internet check is disabled.(This is Normal Most of the time if you manually disable it.)')
 def DownloadItem(url,name,Size):
     if settings.GetGlobsett('disableinterwebzcheck') == '0':
-        print('The size of this file is:' + Size)
+        print(('The size of this file is:' + Size))
         if Size > 100:
             print('This file is quite large and may take a long time on a bad internet.')
-        urllib.urlretrieve (url, name)
+        urllib.request.urlretrieve (url, name)
         print('Done!')
     else:
         logging.info('Connection to internet is currently turned off. please enable it for downloading.')
@@ -34,7 +34,7 @@ def wgetr(item,out=None):
     if item.find('http') == '-1':
         logging.warn('was thrown a invalid link! not processing it.')
     else:
-        print('Wgetting item: ' + item)
+        print(('Wgetting item: ' + item))
         if out ==None:
             wget.download(item)
         else:

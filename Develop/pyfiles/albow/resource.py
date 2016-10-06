@@ -67,7 +67,7 @@ def get_font(size, *names, **kwds):
 	if not font:
 		try:
 			font = pygame.font.Font(path, size)
-		except IOError, e:
+		except IOError as e:
 			raise e.__class__("%s: %s" % (e, path))
 		font_cache[key] = font
 	return font
@@ -90,12 +90,12 @@ def load_sound(path):
 	if not sound:
 		try:
 			from pygame.mixer import Sound
-		except ImportError, e:
+		except ImportError as e:
 			no_sound(e)
 			return dummy_sound
 		try:
 			sound = Sound(path)
-		except pygame.error, e:
+		except pygame.error as e:
 			missing_sound(e, path)
 			return dummy_sound
 		sound_cache[path] = sound
@@ -107,12 +107,12 @@ def get_sound(*names, **kwds):
 
 def no_sound(e):
 	global sound_cache
-	print "albow.resource.get_sound: %s" % e
-	print "albow.resource.get_sound: Sound not available, continuing without it"
+	print("albow.resource.get_sound: %s" % e)
+	print("albow.resource.get_sound: Sound not available, continuing without it")
 	sound_cache = None
 
 def missing_sound(e, name):
-	print "albow.resource.get_sound: %s: %s" % (name, e)
+	print("albow.resource.get_sound: %s: %s" % (name, e))
 
 def get_text(*names, **kwds):
 	path = _resource_path("text", names, **kwds)
@@ -129,8 +129,8 @@ def load_cursor(path):
 	data = []
 	mask = []
 	rowbytes = (width + 7) // 8
-	xr = xrange(width)
-	yr = xrange(height)
+	xr = range(width)
+	yr = range(height)
 	for y in yr:
 		bit = 0x80
 		db = mb = 0
@@ -148,7 +148,7 @@ def load_cursor(path):
 				mask.append(mb)
 				db = mb = 0
 				bit = 0x80
-		if bit <> 0x80:
+		if bit != 0x80:
 			data.append(db)
 			mask.append(mb)
 	return ((8 * rowbytes, height), hot, data, mask)

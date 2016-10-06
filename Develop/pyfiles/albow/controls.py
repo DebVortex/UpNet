@@ -3,10 +3,10 @@
 #
 
 from pygame import Rect, draw
-from widget import Widget, overridable_property
-from theme import ThemeProperty
-from utils import blit_in_rect, frame_rect
-import resource
+from .widget import Widget, overridable_property
+from .theme import ThemeProperty
+from .utils import blit_in_rect, frame_rect
+from . import resource
 
 #---------------------------------------------------------------------------
 
@@ -165,7 +165,7 @@ class ButtonBase(Control):
 		
 	def mouse_drag(self, event):
 		state = event in self
-		if state <> self._highlighted:
+		if state != self._highlighted:
 			self._highlighted = state
 			self.invalidate()
 	
@@ -214,7 +214,7 @@ class Image(Widget):
 	def __init__(self, image = None, rect = None, **kwds):
 		Widget.__init__(self, rect, **kwds)
 		if image:
-			if isinstance(image, basestring):
+			if isinstance(image, str):
 				image = resource.get_image(image)
 			w, h = image.get_size()
 			d = 2 * self.margin

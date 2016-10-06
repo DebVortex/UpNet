@@ -4,10 +4,10 @@
 #
 #-----------------------------------------------------------------------
 
-from controls import Control
-from palette_view import PaletteView
+from .controls import Control
+from .palette_view import PaletteView
 from albow.utils import blit_in_rect
-from theme import ThemeProperty
+from .theme import ThemeProperty
 from pygame import draw
 from pygame.locals import K_LEFT, K_RIGHT
 
@@ -73,7 +73,7 @@ class TextMultichoice(Multichoice):
 
 	def __init__(self, values, labels = None, **kwds):
 		if not labels:
-			labels = map(str, values)
+			labels = list(map(str, values))
 		font = self.predict_font(kwds)
 		d = 2 * self.predict(kwds, 'margin')
 		cd = 2 * self.predict(kwds, 'cell_margin')

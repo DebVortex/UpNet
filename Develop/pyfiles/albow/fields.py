@@ -4,8 +4,8 @@
 
 from pygame import draw
 from pygame.locals import K_LEFT, K_RIGHT, K_TAB
-from widget import Widget, overridable_property
-from controls import Control
+from .widget import Widget, overridable_property
+from .controls import Control
 
 #---------------------------------------------------------------------------
 
@@ -61,12 +61,12 @@ class TextEditor(Widget):
 				self.tab_to_next()
 				return
 			try:
-				c = event.unicode
+				c = event.str
 			except ValueError:
 				c = ""
-			if self.insert_char(c) <> 'pass':
+			if self.insert_char(c) != 'pass':
 				return
-		if event.cmd and event.unicode:
+		if event.cmd and event.str:
 			self.attention_lost()
 		self.call_parent_handler('key_down', event)
 	

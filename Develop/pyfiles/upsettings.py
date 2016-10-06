@@ -1,7 +1,7 @@
 import easysettings
 import datetime
 import random
-import NetExcepts as Excepts
+from pyfiles import NetExcepts as Excepts
 import logging
 import json
 #NOTE: moving away from easysettings config files (pls remember!)
@@ -27,7 +27,7 @@ def GetIPSett(name):
 def GetGlobsett(name):
     try:
         logging.debug(Globcfg.get(name))
-        print(Globcfg.get(name))
+        print((Globcfg.get(name)))
         return (Globcfg.get(name))
     except Exception:
         Excepts.GetError(name)

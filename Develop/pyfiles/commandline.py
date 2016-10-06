@@ -1,11 +1,10 @@
-from __future__ import print_function 
 #main menu
-import GlobalFuns as Global
-import SoundHandler as Sound
+import .GlobalFuns as Global
+import .SoundHandler as Sound
 import logging, os, sys, time
-import upsettings as settings
-import Generators as Gen
-import sys
+import .upsettings as settings
+import .Generators as Gen
+import .sys
 
 def mainmenu():
     printf('1. New User')
@@ -16,7 +15,7 @@ def mainmenu():
     print('')
     printf('4. Exit')
     print('')
-    selection = input('Input >:')
+    selection = eval(input('Input >:'))
     selection = int(selection)
     print(selection)
     if selection == 1:
@@ -31,7 +30,7 @@ def Newgame():
     print('Please select your personal playstyle:')
     print('1 : Uplink Playstyle(Gateway to Upnet servers)')
     print('2 : No Gateway (Hacknet Experience)')
-    Newgamesel = raw_input('Input >:')
+    Newgamesel = input('Input >:')
     if Newgamesel == 1:
         Uplink()
     elif Newgamesel == 2:

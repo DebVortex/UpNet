@@ -1,22 +1,27 @@
+#fix Python 3/2 issues
+
 #system/python
 import sys
 import os
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import logging
 import time
 import random
 #pygame
 import pygame
 #other pyfiles
-import upsettings as settings
-import SoundHandler as sound
-import urllib2
+#Workaround for python 3.5 nuisences
+
+from pyfiles import upsettings as settings
+from pyfiles import SoundHandler as sound
+import urllib.request, urllib.error, urllib.parse
 import requests
 import commandline
 import Mods
-import cPickle
+import pickle
 import datetime
 def startupgame():
+    print((os.getcwd()))
     detectOS()
     sound.StartupHandler()
     print('loading all Mods...')
@@ -59,5 +64,3 @@ def Spam(Spam):
         logging.info('sorry :(')
     else:
         pass
-def SaveGame():
-    

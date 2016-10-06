@@ -3,8 +3,8 @@
 import os
 import sys
 import logging
-import upsettings
-import SoundHandler as sound
+from . import upsettings
+from . import SoundHandler as sound
 import json_config
 import glob
 Modstempglob = []

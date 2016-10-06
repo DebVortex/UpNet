@@ -11,8 +11,8 @@ from pygame.locals import *
 from pygame.time import Clock, get_ticks, set_timer as set_pygame_timer
 from pygame.event import Event, get_grab, set_grab
 from pygame.mouse import set_visible as set_mouse_visible
-import widget
-from widget import Widget
+from . import widget
+from .widget import Widget
 
 mod_cmd = KMOD_LCTRL | KMOD_RCTRL | KMOD_LMETA | KMOD_RMETA
 double_click_time = 300 # milliseconds
@@ -99,11 +99,11 @@ class RootWidget(Widget):
 		self.surface = surface
 		root_widget = self
 		widget.root_widget = self
-		self.is_gl = surface.get_flags() & OPENGL <> 0
+		self.is_gl = surface.get_flags() & OPENGL != 0
 		if self.is_gl:
 			#global GL
 			#from OpenGL import GL
-			from opengl import GLSurface
+			from .opengl import GLSurface
 			self.gl_surface = GLSurface(surface, self.rect)
 	
 	def set_timer(self, ms):
@@ -140,7 +140,7 @@ class RootWidget(Widget):
 			use_sleep = self._use_sleep
 			while modal_widget.modal_result is None:
 				#print "RootWidget: frame_time =", self.frame_time ###
-				defer_drawing = self.frame_time <> 0.0 and modal_widget.defer_drawing()
+				defer_drawing = self.frame_time != 0.0 and modal_widget.defer_drawing()
 				try:
 					if not is_modal:
 						if timer_event:
@@ -177,7 +177,7 @@ class RootWidget(Widget):
 						#print "RootWidget: Flip block  %5d" % (tb2 - tb1) ###
 					in_relative_mode = bool(modal_widget.relative_mode())
 					grab = in_relative_mode and not relative_pause
-					if grab <> get_grab():
+					if grab != get_grab():
 						set_grab(grab)
 						set_mouse_visible(not grab)
 						relative_warmup = 3 # Ignore spurious deltas on entering relative mode
@@ -320,7 +320,7 @@ class RootWidget(Widget):
 								timer_event = event
 				except Cancel:
 					pass
-				except ApplicationError, e:
+				except ApplicationError as e:
 					self.report_error(e)
 		finally:
 			modal_widget.is_modal = was_modal
@@ -373,7 +373,7 @@ class RootWidget(Widget):
 #			| GL.GL_ACCUM_BUFFER_BIT | GL.GL_STENCIL_BUFFER_BIT)
 	
 	def music_end(self):
-		import music
+		from . import music
 		music.music_end()
 	
 #	def pause_relative_mode(self):

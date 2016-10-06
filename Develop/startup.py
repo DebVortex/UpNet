@@ -1,10 +1,7 @@
-from pyfiles import GlobalFuns as Global
-from pyfiles import SoundHandler as Sound
+from __future__ import absolute_import
+from pyfiles import GlobalFuns,SoundHandler,upsettings,Generators,commandline
 import logging
 import os
-from pyfiles import debuger as debug
-from pyfiles import upsettings as settings
-from pyfiles import Generators as Gen
 logging.basicConfig(filename='DEBUG.log',level=logging.DEBUG)
 logging.info('imports are ok!')
 print('---------------------------------')

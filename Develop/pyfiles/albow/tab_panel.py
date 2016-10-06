@@ -5,9 +5,9 @@
 ################################################################
 
 from pygame import Rect
-from widget import Widget
-from theme import ThemeProperty, FontProperty
-from utils import brighten
+from .widget import Widget
+from .theme import ThemeProperty, FontProperty
+from .utils import brighten
 
 class TabPanel(Widget):
 	#  pages         [Widget]

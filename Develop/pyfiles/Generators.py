@@ -5,6 +5,7 @@
 #News Generator
 #Records Generator
 #World Generator
+
 import random
 import logging
 import pygame

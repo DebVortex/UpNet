@@ -2,11 +2,11 @@
 #   Albow - Table View
 #
 
-from itertools import izip
+
 from pygame import Rect
-from layout import Column
-from palette_view import PaletteView
-from utils import blit_in_rect
+from .layout import Column
+from .palette_view import PaletteView
+from .utils import blit_in_rect
 
 class TableView(Column):
 
@@ -99,7 +99,7 @@ class TableColumn(object):
 		self.width = width
 		self.alignment = align
 		if fmt:
-			if isinstance(fmt, (str, unicode)):
+			if isinstance(fmt, str):
 				self.format_string = fmt
 			else:
 				self.formatter = fmt

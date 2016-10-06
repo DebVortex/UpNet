@@ -21,7 +21,7 @@ class ImageArray(object):
 			raise TypeError("Can only use len() on 1-dimensional image array")
 		return result
 	
-	def __nonzero__(self):
+	def __bool__(self):
 		return True
 
 	def __getitem__(self, index):

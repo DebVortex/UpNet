@@ -1,13 +1,15 @@
 # Sound Handler #
 # Handles all things related to sounds: Loading,lists loading,playing, etc etc...
+#Workaround for python 3.5 nuisences
 import logging
 import pygame
-import upsettings as settings
+from pyfiles import upsettings as settings
+from pyfiles import NetExcepts as Excepts
 import easysettings
 import shutil
 import os
-import albow
-import NetExcepts as Excepts
+from pyfiles import albow
+
 #Generic sound stuff.
 def StartupHandler():
     logging.debug('Starting up Music module')

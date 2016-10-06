@@ -5,9 +5,9 @@
 #---------------------------------------------------------------------------
 
 import sys
-from root import get_root, get_focus
-from dialogs import Dialog
-from theme import ThemeProperty
+from .root import get_root, get_focus
+from .dialogs import Dialog
+from .theme import ThemeProperty
 
 #---------------------------------------------------------------------------
 
