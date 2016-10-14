@@ -5,7 +5,7 @@
 #News Generator
 #Records Generator
 #World Generator
-
+from __future__ import absolute_import
 import random
 import logging
 import pygame
@@ -13,6 +13,8 @@ import upsettings as settings
 import GlobalFuns as Global
 import NetExcepts as EN
 import linereader
+import faker
+import secrets
 #TODO:rewrite classes
 class WorldGen:
     def GenAll():
@@ -31,26 +33,39 @@ class NewsGen:
 #IPgen now works. leaving it as of now...
 def IPGen(name,IP=None):
     if IP==None:
-        logging.debug('startgen!')
-        not_valid = [10,127,169,172,192]
-        first = random.randrange(1,256)
-        while first in not_valid:
-            first = random.randrange(1,256)
-        ip = ".".join([str(first),str(random.randrange(1,256)),
-        str(random.randrange(1,256)),str(random.randrange(1,256))])
-        settings.IPset(name,ip)
-        logging.debug('done!')
-        return(ip)
+        settings.IPset(name,(fake.ipv4())
     elif IP is not None:
         settings.IPset(name,IP)
     else:
         EN.GenError()
 #passwords (i guess it is considered under generators? :P)
-def passwordget(name):
-    passwords = linereader.dopen(name)
-    nolines = name.count('\n')
-    logging.info('the number of lines in this files is :' + nolines)
-    return (file.getline(random.randint(1,nolines)))
+def passwordcreate(name):
+    Schars = None
+    Digits = None
+    Upcase = None
+    LoCase = None
+    if bool(secrets.randbelow(1)) == True:
+        Schars = True
+    else:
+        Schars = False
+    if bool(secrets.randbelow(1)) == True:
+        Digits = True
+    else:
+        Digits = False
+    if bool(secrets.randbelow(1)) == True:
+        Upcase = True
+    else:
+        Upcase = False
+    if bool(secrets.randbelow(1)) == True:
+        LoCase = True
+    else:
+        LoCase = False
+    
+    length = secrets.randbelow(10)
+    print(fake.password(length,Schars, Digits, Upcase, LoCase))
+    return fake.password(length, Schars, Digits, Upcase, LoCase)
     
 def StaticIP():
-    IPGen('Introversionsoftware','50.19.100.182')   
+    IPGen('Introversionsoftware','50.19.100.182')
+passwordcreate()
+passwordcreate()
