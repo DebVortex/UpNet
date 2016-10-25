@@ -3,4 +3,4 @@ by Gregory Ewing
 greg.ewing@canterbury.ac.nz
 """
 
-from .version import version
+from . import version

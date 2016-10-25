@@ -4,6 +4,7 @@ import random
 from pyfiles import NetExcepts as Excepts
 import logging
 import json
+
 #NOTE: moving away from easysettings config files (pls remember!)
 IPcfg = easysettings.EasySettings("Configuration\IPcfg.cfg")
 Globcfg = easysettings.EasySettings("Configuration\General.cfg")

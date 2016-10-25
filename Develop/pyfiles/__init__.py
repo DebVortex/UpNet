@@ -1,1 +1,2 @@
-import commandline,eastereggs,Generators,GlobalFuns,GUI,Mods,NetExcepts,screenhandler,SoundHandler,upsettings
+from . import (commandline, eastereggs, Generators, GlobalFuns, GUI, Mods,
+    NetExcepts, screenhandler, SoundHandler, upsettings)

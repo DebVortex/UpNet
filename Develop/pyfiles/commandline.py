@@ -1,10 +1,13 @@
 #main menu
-import .GlobalFuns as Global
-import .SoundHandler as Sound
-import logging, os, sys, time
-import .upsettings as settings
-import .Generators as Gen
-import .sys
+from . import GlobalFuns as Global
+from . import SoundHandler as Sound
+import logging
+import os
+import sys
+import time
+from . import upsettings as settings
+from . import Generators as Gen
+
 
 def mainmenu():
     printf('1. New User')
@@ -24,7 +27,8 @@ def mainmenu():
         sys.exit('Err code : 0')
     elif selection == 2:
         LoadGame()
-    
+
+
 #New game
 def Newgame():
     print('Please select your personal playstyle:')
@@ -35,24 +39,30 @@ def Newgame():
         Uplink()
     elif Newgamesel == 2:
         printf('narp! not done yet :)')
+
+
 def Uplink():
-    printf('Connectiong to uplink access server...','0.1')
+    printf('Connectiong to uplink access server...', '0.1')
     Gen.IPGen('uplink')
     printf(settings.GetIPSett('uplink'))
+
+
 # Text utils
-def printf(text,timeperlett='None'):
-    if timeperlett=='None':
+def printf(text, timeperlett='None'):
+    if timeperlett == 'None':
         timeperlett = '0.02'
         timeperlett = float(timeperlett)
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(timeperlett)
+
+
 # play sounds in text.(same as above but with number sounds.)
 def PSIT(text):
     listtext = text.list()
     for x in listtext:
-        print(x,end='')
+        print(x)
         if x == '1':
             Sound.play(Global.corefile + '\buttons\1.wav')
         elif x == '2':
@@ -73,4 +83,3 @@ def PSIT(text):
             Sound.play(Global.corefile + '\buttons\9.wav')
         elif x == '0':
             Sound.play(Global.corefile + '\buttons\0.wav')
-        time.sleep(timeperlett)

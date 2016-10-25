@@ -9,20 +9,24 @@ from __future__ import absolute_import
 import random
 import logging
 import pygame
-import upsettings as settings
-import GlobalFuns as Global
-import NetExcepts as EN
+from . import upsettings as settings
+from . import GlobalFuns as Global
+from . import NetExcepts as EN
 import linereader
 import faker
-import secrets
+
+
 #TODO:rewrite classes
 class WorldGen:
     def GenAll():
         log.info('Starting GenAll run!')
+
+
 class NewsGen:
-    def __init__(self,name,IP = ''):
+    def __init__(self, name, IP=''):
         self.computer = name
         self.IP = IP
+
     def _CompCheck(Computer):
         if Comp == ISSD:
             return ('SocialDB')
@@ -30,14 +34,18 @@ class NewsGen:
             return ('AcadDB')
         elif Comp == GCD:
             return ('CrimeDB')
+
+
 #IPgen now works. leaving it as of now...
-def IPGen(name,IP=None):
-    if IP==None:
-        settings.IPset(name,(fake.ipv4())
+def IPGen(name, IP=None):
+    if IP is None:
+        settings.IPset(name, (fake.ipv4()))
     elif IP is not None:
-        settings.IPset(name,IP)
+        settings.IPset(name, IP)
     else:
         EN.GenError()
+
+
 #passwords (i guess it is considered under generators? :P)
 def passwordcreate(name):
     Schars = None
@@ -67,5 +75,3 @@ def passwordcreate(name):
     
 def StaticIP():
     IPGen('Introversionsoftware','50.19.100.182')
-passwordcreate()
-passwordcreate()

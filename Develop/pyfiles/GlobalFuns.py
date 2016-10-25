@@ -16,8 +16,8 @@ from pyfiles import upsettings as settings
 from pyfiles import SoundHandler as sound
 import urllib.request, urllib.error, urllib.parse
 import requests
-import commandline
-import Mods
+from . import commandline
+from . import Mods
 import pickle
 import datetime
 def startupgame():
